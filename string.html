@@ -1,0 +1,55 @@
+<html>
+<head>
+<style>
+h3,p{font-size: 20px;font-family:monospace ;}
+</style>
+</head>
+<body>
+<br><br>
+<h2 style="color:#495F75;"><center>STRING FUNCTION</center></h2>
+<br>
+<body bgcolor="powderblue">
+<input type="text" placeholder=" Enter the String" id="t1"><br><br>
+<input type="text" placeholder="Enter the start of substring() " id="t2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" placeholder="Enter the end of substring()" id="t3"><br><br>
+<input type="text" placeholder="Enter the start of substr()" id="t4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" placeholder="Enter the length of substr()" id="t5"><br><br> <input type="text" placeholder="Enter the end of slice" id="t6"><br><br>
+<input type="text" placeholder="Enter the string to be replaced" id="t7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" placeholder="string instead of" id="t8"><br><br>
+<input type="text" placeholder="Enter the string to be join" id="t9"><br><br> <button type="button" onclick="string();">operations</button>
+<h2 id="str1"></h2><br>
+<h3 id="d1"></h3>
+<p id="demo1"></p>
+<h3 id="d2" ></h3>
+<p id="demo2"></p>
+<h3 id="d3"></h3>
+<p id="demo3"></p>
+<h3 id="d4"></h3>
+<p id="demo4"></p>
+<h3 id="d5"></h3>
+<p id="demo5"></p>
+<h3 id="d6"></h3>
+<p id="demo6"></p>
+<h3 id="d7"></h3>
+<p id="demo7"></p>
+<h3 id="d8"></h3>
+<p id="demo8"></p>
+<script>
+
+function string(){
+
+var text1 = document.getElementById("t1").value; var n1 = document.getElementById("t2").value; var n2 = document.getElementById("t3").value; var n3 = document.getElementById("t4").value; var n4 = document.getElementById("t5").value; var n5 = document.getElementById("t6").value; var text2 = document.getElementById("t7").value; var text3 = document.getElementById("t8").value; var text4 = document.getElementById("t9").value;
+document.getElementById("d1").innerHTML = "<u>substring("+n1+","+n2+")</u>";
+document.getElementById("demo1").innerHTML = text1.substring(n1,n2)
+document.getElementById("d2").innerHTML = "<u>substr("+n3+","+n4+")</u>";
+document.getElementById("demo2").innerHTML = text1.substr(n3,n4); document.getElementById("d3").innerHTML = "<u>slice(0,"+n5+")</u>"; document.getElementById("demo3").innerHTML = text1.slice(n5);
+document.getElementById("d4").innerHTML = "<u>replace("+text2+","+text3+")</u>";
+document.getElementById("demo4").innerHTML = text1.replace(text2,text3); document.getElementById("d5").innerHTML = "<u>concat()</u>"; document.getElementById("demo5").innerHTML = text1.concat(" ",text4); document.getElementById("d6").innerHTML = "<u>length of </u>"+text1; document.getElementById("demo6").innerHTML = text1.length;
+document.getElementById("d7").innerHTML = "<u>converting to uppercase</u>";
+document.getElementById("demo7").innerHTML = text1.toUpperCase();
+document.getElementById("d8").innerHTML = "<u>converting to lowercase</u>";
+document.getElementById("demo8").innerHTML = text1.toLowerCase();;
+}
+</script>
+</body>
+</html>

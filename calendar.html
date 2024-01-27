@@ -1,0 +1,96 @@
+<html>
+
+<head>
+  <title>calendar</title>
+</head>
+
+<style>
+     table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: 3px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      font-weight: bold;
+      background-color: #E6E6E6;
+    }
+    td{
+       font-size: 50px;
+    }
+</style>
+
+<body style="background-color:powderblue;">
+  <div class="myDiv">
+    <h2 style="color:black; text-align:center;"><u><b>CALENDAR</b></u></h2>
+  </div>
+  <center>
+    Enter the year:
+    <input type="text" placeholder="yyyy" id="t1"><br><br>
+    Enter the month:
+    <input type="text" placeholder="mm" id="t2"><br><br>
+    <button type="button" onclick="call()">Generate Calendar</button>
+    <center>
+      <h2 style="color:black;" id="h1"></h2>
+    </center>
+    <br>
+    <br>
+    <div id="demo"></div>
+
+    <script>
+      function createCalendar(elem, year, month) {
+        let mon = month - 1;
+        let d = new Date(year, mon);
+        let table = '<h3>' + getMonthName(mon) + ' ' + year + '</h3>';
+        table += '<table><tr><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th><th>SUN</th></tr><tr>';
+        for (let i = 0; i < getDay(d); i++) {
+          table += '<td></td>';
+        }
+
+        while (d.getMonth() == mon) {
+          if (getDay(d) % 7 != 6)
+            table += '<td>' + d.getDate() + '</td>';
+          else
+            table += '<td style="color:red;">' + d.getDate() + '</td>';
+          if (getDay(d) % 7 == 6) {
+            table += '</tr><tr>';
+          }
+
+          d.setDate(d.getDate() + 1);
+        }
+        if (getDay(d) != 0) {
+          for (let i = getDay(d); i < 7; i++) {
+            table += '<td></td>';
+          }
+        }
+        table += '</tr></table>';
+
+        elem.innerHTML = table;
+      }
+
+      function getDay(date) {
+        let day = date.getDay();
+        if (day == 0) day = 7;
+        return day - 1;
+      }
+
+      function getMonthName(month) {
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        return monthNames[month];
+      }
+
+      function call() {
+        var year = document.getElementById("t1").value;
+        var month = document.getElementById("t2").value;
+        createCalendar(demo, year, month);
+      }
+    </script>
+  </center>
+</body>
+
+</html>

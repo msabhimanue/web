@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <title> Quiz</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height:auto;
+        background-color:rgb(176, 224, 230) ;
+    }
+
+    #examContainer {
+        background-color: rgb(112,112,112);
+        border: 20px solid rgb(91, 176, 233);
+        padding: 20px;
+    }
+
+    form {
+        text-align: left;
+    }
+
+    #result {
+        margin-top: 20px;
+        text-align: left;
+    }
+  </style>
+ </head>
+ <body bgcolor="powderblue">
+  <div id="examContainer">
+   <h1 align="center"><u>WEB PROGRAMMING TEST</u></h1>
+   <form id="examForm">
+    <h3>1: HTML stands for -</h3><br>
+<label> <input type="radio" name="q1" value="HyperText Markup Language">HyperText Markup Language<br></label> 
+<label> <input type="radio" name="q1" value="HighText Machine Language">HighText Machine Language<br></label>
+ <label> <input type="radio" name="q1" value="HyperText and links Markup Language">HyperText and links Markup Language<br></label>
+    <h3>2:Which of the following attribute is used to provide a unique name to an element?</h3>
+<label> <input type="radio" name="q2" value="class">class<br></label> <label> 
+<input type="radio" name="q2" value="type">type<br></label> <label> 
+<input type="radio" name="q2" value="id">id.<br></label>
+    <h3>3:What are the types of unordered or bulleted list in HTML?</h3>
+<label> <input type="radio" name="q3" value="disc, circle, square">disc, circle, square<br></label> 
+<label> <input type="radio" name="q3" value="disc, square, triangle"> disc, square, triangle<br></label> 
+<label> <input type="radio" name="q3" value="Both A and B"> Both A and B<br></label>
+    <h3>4:The "function" and " var" are known as:</h3>
+<label> <input type="radio" name="q4" value="Declaration statements">Declaration statements<br></label> 
+<label> <input type="radio" name="q4" value="Keywords">Keywords<br></label>
+ <label> <input type="radio" name="q4" value="Data types">Data types<br></label>
+    <h3>5:Which of the following variables takes precedence over the others if the names are the same?</h3>
+<label> <input type="radio" name="q5" value="The local element">The local element<br></label> 
+<label> <input type="radio" name="q5" value="None of the above">None of the above<br></label>
+ <label> <input type="radio" name="q5" value="Global variable"> Global variable<br></label>
+    <br>
+    <br>
+    <center>
+     <input type="button" value="Submit" onclick="submitExam()">
+    </center>
+   </form>
+   <div id="result" style="display: none;background-color:powderblue;">
+    <center>
+     <h2>Result:</h2>
+     <p id="score"></p>
+     <h3>Correct Answers:</h3>
+     <ul id="correctAnswers"></ul>
+    </center>
+   </div>
+  </div>
+  <script>
+    function submitExam() {
+        // Questions and Correct Answers
+        const correctAnswers = {
+            q1: 'HyperText Markup Language',
+            q2: 'id',
+            q3: 'disc, circle, square',
+            q4: 'Declaration statements',
+            q5: 'The local element',
+        };
+
+        const userAnswers = {
+            q1: document.querySelector('input[name="q1"]:checked').value,
+            q2: document.querySelector('input[name="q2"]:checked').value,
+            q3: document.querySelector('input[name="q3"]:checked').value,
+            q4: document.querySelector('input[name="q4"]:checked').value,
+            q5: document.querySelector('input[name="q5"]:checked').value,
+        };
+
+        // Calculate score
+        let score = 0;
+        for (const question in correctAnswers) {
+            if (correctAnswers[question] === userAnswers[question]) {
+                score++;
+            }
+        }
+
+        document.getElementById('score').innerText = `OBTAINED SCORE: ${score} out of 5`;
+        const correctAnswersList = document.getElementById('correctAnswers');
+        correctAnswersList.innerHTML = '';
+
+        for (const question in correctAnswers) {
+            const li = document.createElement('li');
+            const userAns = userAnswers[question];
+            const correctAns = correctAnswers[question];
+            
+            li.innerHTML = `<strong>Question ${question.slice(1)}:</strong><br> Your Answer: ${userAns}<br> Correct Answer: ${correctAns}`;
+            correctAnswersList.appendChild(li);
+        }
+
+        document.getElementById('result').style.display = 'block';
+        alert("your score is: "+ score);
+    }
+  </script>
+ </body>
+</html>
